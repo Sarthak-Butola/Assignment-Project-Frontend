@@ -11,6 +11,7 @@ import { Provider } from 'react-redux'
 import issueStore from './utils/issueStore'
 import IssueList from './components/IssueList'
 import SearchPage from './components/searchPage'
+import CreateIssue from './components/AddIssue'
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
     <Route path='/dashBoard' element={<DashBoard/>} />
     <Route path='/issueList' element={<IssueList/>} />
     <Route path='/searchPage' element={<SearchPage/>} />
+    <Route path='/createIssue' element={<CreateIssue/>} />
 
     </Route>
     </Routes>

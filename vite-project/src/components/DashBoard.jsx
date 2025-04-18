@@ -14,7 +14,7 @@ const DashBoard = () => {
     let fetchIssues = async()=>{
         try{
           let issues = await axios.get(BASE_URL + "/issues/getAll", {}, {withCredentials:true});
-          console.log(issues.data);
+          // console.log(issues.data);
 
           //add data in redux store slice
           dispatch(addIssues(issues?.data));
