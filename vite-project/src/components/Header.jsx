@@ -12,7 +12,7 @@ const navigate = useNavigate();
 
 
   let handlePriorityClick = async(e)=>{
-    let issues = await axios.get(BASE_URL + `/issues/` + e.target.innerText, {}, {withCredentials:true});
+    let issues = await axios.get(BASE_URL + `/issues/` + e.target.innerText);
     // console.log(issues.data);
     dispatch(addIssues(issues?.data));
   }
@@ -40,15 +40,20 @@ const navigate = useNavigate();
 
         <button
   className="px-5 py-2 bg-gray-600 cursor-pointer text-white font-semibold rounded hover:bg-gray-600 transform hover:scale-105 transition duration-200" onClick={showAllIssues}>
-  Show All Issues
+  All Issues
 </button>
 
 
         <button
-  className="px-5 py-2 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-500 transform hover:scale-105 transition duration-200 cursor-pointer" onClick={()=>{navigate('/createIssue')}} >
+  className=" px-5 py-2 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-500 transform hover:scale-105 transition duration-200 cursor-pointer" onClick={()=>{navigate('/createIssue')}} >
      + Add Issue 
      </button>
         
+     <button
+  className="px-5 py-2 bg-emerald-600 text-white font-semibold rounded hover:bg-emerald-500 transform hover:scale-105 transition duration-200 cursor-pointer" onClick={()=>{navigate('/dashBoard')}} >
+     DashBoard 
+     </button>
+
       </div>
 
       {/* Search Bar + Button */}

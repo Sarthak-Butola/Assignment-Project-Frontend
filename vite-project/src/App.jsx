@@ -12,6 +12,7 @@ import issueStore from './utils/issueStore'
 import IssueList from './components/IssueList'
 import SearchPage from './components/searchPage'
 import CreateIssue from './components/AddIssue'
+import EditIssue from './components/EditIssue'
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
     <Route path='/issueList' element={<IssueList/>} />
     <Route path='/searchPage' element={<SearchPage/>} />
     <Route path='/createIssue' element={<CreateIssue/>} />
+    <Route path='/editIssue' element={<EditIssue/>} />
 
     </Route>
     </Routes>

@@ -12,7 +12,7 @@ const SearchPage = () => {
   
   const handleSearch = async() => {
     try{
-    let issue = await axios.get(BASE_URL + "/issues/search/" + query,{},{withCredentials:true});
+    let issue = await axios.get(BASE_URL + "/issues/search/" + query);
     // console.log(issue?.data);
     dispatch(addSearch(issue?.data));
     }catch(err){

@@ -1,15 +1,25 @@
 import axios from 'axios';
 import React from 'react';
 import { BASE_URL } from '../utils/constants';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addInfo } from '../utils/editIssueslice';
 
 
 const IssueList = ({issue}) => {
+      const navigate = useNavigate();
+      const dispatch = useDispatch();
+
         const {_id, title, description, status, priority, createdAt} = issue;
 
       const handleDelete = async()=>{
         try{
+        const confirmDelete = window.confirm("Are you sure you want to delete this issue?");
+        if (!confirmDelete) return;
         let issue = await axios.delete(BASE_URL + "/issues/delete/" + _id);
-        console.log(issue);
+        // console.log(issue);
+        alert("Issue successfully deleted");
+
         window.location.reload();
         }
         catch(err){
@@ -38,15 +48,15 @@ const IssueList = ({issue}) => {
               <button
                 className="text-sm px-4 py-2 bg-black text-white rounded hover:cursor-pointer hover:scale-110 transition"
                 onClick={() => {
-                  // handle edit click here
-                //   console.log('Edit Issue clicked');
+                  dispatch(addInfo({_id,title, description, status, priority}));
+                  navigate('/editIssue')
                 }}
               >
                 Edit Issue
               </button>
 
               <button
-                className="text-sm px-4 py-2 bg-red-600 text-white rounded hover:cursor-pointer hover:scale-110 transition mt-2"
+                className=" p-2 text-sm px-z4 py-2 bg-red-600 text-white rounded hover:cursor-pointer hover:scale-110 transition mt-2"
                 onClick={handleDelete}
               >
                 Delete Issue
